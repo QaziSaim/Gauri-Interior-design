@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Header -->
+    <header id="header">
+        <div class="intro">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="intro-text">
+                            <h1><strong>Gauri Interiors: </strong> <span></span> Turning Your Vision into Reality
+                            </h1>
+                            <p>Bringing Your Dream Home to Life with Inspired Designs!</p>
+                            <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About Section -->
+    <div id="about">
+        <div class="container">
+            <div class="section-title text-center center">
+                <h2>Our Story</h2>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 text-center"><img src="{% static 'img/about.jpg' %}"
+                                                                 class="img-responsive"
+                                                                 alt=""></div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="about-text">
+                        <h3>The Studio</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
+                            diam.
+                            Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare
+                            diam
+                            commodo nibh.</p>
+                        <h3>How We Work</h3>
+                        <p>Our process begins with understanding your vision and transforming it into a thoughtful design. With expert craftsmanship and attention to detail, we bring your dream space to life..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services Section -->
+    <div id="services">
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1 section-title text-center">
+                <h2>Our Services</h2>
+                <hr>
+                <p>Offering personalized home design solutions to create spaces that inspire and delight.</p>
+            </div>
+            <div class="row">
+                {% for service in services %}
+                    <div class="col-xs-12 col-sm-4 service"><img src="{{ service.image.url }}"
+                                                                 class="img-responsive"
+                                                                 alt="Project Title">
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                    {% if service.url %}
+                        <a href="{{ service.url }}">Check website</a>
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Team Section -->
+    <div id="team" class="text-center">
+        <div class="overlay">
+            <div class="container">
+                <div class="col-md-8 col-md-offset-2 section-title">
+                    <h2>Meet the Team</h2>
+                    <hr>
+                    <p>Get to know the creative minds behind our designs – Meet our team!</p>
+                </div>
+                <div id="row">
+                    {% for member in teammembers %}
+                        <div class="col-md-3 col-sm-6 team">
+                            <div class="thumbnail"><img src="{{ member.image.url }}" alt="..." class="team-img">
+                                <div class="caption">
+                                    <h3>{{ member.title | title }}</h3>
+                                    <p>{{ member.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Contact Us</h2>
+                <hr>
+                <p>Transform your space with our expert home design solutions – Contact us today!</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Contact Info</h3>
+                <div class="contact-item"><span>Address</span>
+                    <p>BMC plot jaihind budhha
+                         vikas chs jagruti Nagar 
+                         opp bldg no.95neharu nagar
+                          kurla (e) Mumbai 400024</p>
+                </div>
+                <div class="contact-item"><span>Email</span>
+                    <p>info@company.com</p>
+                </div>
+                <div class="contact-item"><span>Phone</span>
+                    <p> +91 88280 60744</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3>Leave us a message</h3>
+                <form name="sentMessage" method="post" id="contactForm" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="name" class="form-control" placeholder="Name"
+                                       required="required">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" id="email" class="form-control" placeholder="Email"
+                                       required="required">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message"
+                              required></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div id="success"></div>
+                    <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
