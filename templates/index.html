@@ -90,59 +90,5 @@
             </div>
         </div>
     </div>
-    <!-- Contact Section -->
-    <div id="contact">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Contact Us</h2>
-                <hr>
-                <p>Transform your space with our expert home design solutions – Contact us today!</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Contact Info</h3>
-                <div class="contact-item"><span>Address</span>
-                    <p>BMC plot jaihind budhha
-                         vikas chs jagruti Nagar 
-                         opp bldg no.95neharu nagar
-                          kurla (e) Mumbai 400024</p>
-                </div>
-                <div class="contact-item"><span>Email</span>
-                    <p>info@company.com</p>
-                </div>
-                <div class="contact-item"><span>Phone</span>
-                    <p> +91 88280 60744</p>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <h3>Leave us a message</h3>
-                <form name="sentMessage" method="post" id="contactForm" novalidate>
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" id="name" class="form-control" placeholder="Name"
-                                       required="required">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="email" id="email" class="form-control" placeholder="Email"
-                                       required="required">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                    <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message"
-                              required></textarea>
-                        <p class="help-block text-danger"></p>
-                    </div>
-                    <div id="success"></div>
-                    <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
 {% endblock content %}
