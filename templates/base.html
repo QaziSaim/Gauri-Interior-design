@@ -6,14 +6,26 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-{% include 'navbar.html' %}
+    {% include 'navbar.html' %}
 
-{% block content %}
+    <!-- Display Messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 
-{% endblock content %}
+    {% block content %}
 
-{% include 'footer.html' %}
-{% include 'scripts.html' %}
+    {% endblock content %}
+
+    {% include 'footer.html' %}
+    {% include 'scripts.html' %}
 </body>
-
 </html>

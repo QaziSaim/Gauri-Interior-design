@@ -1,14 +1,17 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import Service, TeamMember
-from django.core.mail import send_mail
+
 
 # views.py
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
 from django.conf import settings
-from django.http import HttpResponse
 from django.contrib import messages
 
+#
+from twilio.rest import Client
+from django.http import HttpResponse
+
+from django.shortcuts import render
 
 # Create your views here.
 def index(request):
@@ -21,28 +24,47 @@ def index(request):
     return render(request, 'index.html', context)
 # view contact
 
+# def contact(request):
+#     return render(request, 'contact.html')
+# def contact(request):
+#     if request.method == 'POST':
+#         # Extract form data
+#         name = request.POST.get('name')
+#         contact = request.POST.get('contact')
+#         message = request.POST.get('message')
+
+#         # Create the SMS message body
+#         message_body = f"New Message\nName: {name}\nContact: {contact}\nMessage: {message}"
+
+#         # Send the message using Twilio
+#         client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+#         try:
+#             client.messages.create(
+#                 from_=settings.TWILIO_FROM,
+#                 body=message_body,
+#                 to=settings.SMS_TO,
+#             )
+#             return HttpResponse("Message sent successfully!")
+#         except Exception as e:
+#             return HttpResponse(f"Failed to send message: {e}")
+#     return render(request, 'contact.html')
+
+
 def contact(request):
+    context = {}
+    default_email='qazisaim121@gmail.com'
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
+        address = default_email
+        subject = request.POST.get('subject')
         message = request.POST.get('message')
 
-        # Send the email
-        try:
-            send_mail(
-                f'Contact Form Message from {name}',  # Subject
-                message,  # Message body
-                email,  # From email (sender)
-                [settings.EMAIL_HOST_USER],  # To email
-                fail_silently=False,
-            )
-            # Optionally, you can use Django messages framework to show a success message
-            messages.success(request, 'Thank you for your message! We will get back to you shortly.')
-            return redirect('contact')  # Redirect to the same contact page or a success page
-        except Exception as e:
-            messages.error(request, f"Something went wrong: {str(e)}")
-
-    return render(request, 'contact.html')
-
-
-
+        if address and subject and message:
+            try:
+                send_mail(subject, message, settings.EMAIL_HOST_USER, [address])
+                context['result'] = 'Email sent successfully'
+            except Exception as e:
+                context['result'] = f'Error sending email: {e}'
+        else:
+            context['result'] = 'All fields are required'
+    
+    return render(request, "new_contact.html", context)

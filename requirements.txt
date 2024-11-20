@@ -2,3 +2,5 @@ django
 pillow
 django-active-link
 twilio
+django-crispy-forms
+python-dotenv
