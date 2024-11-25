@@ -25,16 +25,16 @@
                 <hr>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-md-6 text-center"><img src="{% static 'img/about.jpg' %}"
+                <!-- <div class="col-xs-12 col-md-6 text-center"><img src="{% static 'img/about.jpg' %}"
                                                                  class="img-responsive"
-                                                                 alt=""></div>
+                                                                 alt=""></div> -->
                 <div class="col-xs-12 col-md-6">
                     <div class="about-text">
-                        <h3>The Studio</h3>
+                        <h3>The company</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
                             diam.
                             Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare
-                            diam
+                            diam    
                             commodo nibh.</p>
                         <h3>How We Work</h3>
                         <p>Our process begins with understanding your vision and transforming it into a thoughtful design. With expert craftsmanship and attention to detail, we bring your dream space to life..</p>
@@ -67,9 +67,10 @@
         </div>
     </div>
     <!-- Team Section -->
-    <div id="team" class="text-center">
-        <div class="overlay">
-            <div class="container">
+     <!--
+        <div id="team" class="text-center">
+            <div class="overlay">
+                <div class="container">
                 <div class="col-md-8 col-md-offset-2 section-title">
                     <h2>Meet the Team</h2>
                     <hr>
@@ -77,18 +78,19 @@
                 </div>
                 <div id="row">
                     {% for member in teammembers %}
-                        <div class="col-md-3 col-sm-6 team">
-                            <div class="thumbnail"><img src="{{ member.image.url }}" alt="..." class="team-img">
-                                <div class="caption">
-                                    <h3>{{ member.title | title }}</h3>
-                                    <p>{{ member.description }}</p>
-                                </div>
+                    <div class="col-md-3 col-sm-6 team">
+                        <div class="thumbnail"><img src="{{ member.image.url }}" alt="..." class="team-img">
+                            <div class="caption">
+                                <h3>{{ member.title | title }}</h3>
+                                <p>{{ member.description }}</p>
                             </div>
                         </div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-
+    -->
+    
 {% endblock content %}

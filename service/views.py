@@ -52,9 +52,10 @@ def index(request):
 
 def contact(request):
     context = {}
-    default_email='qazisaim121@gmail.com'
+    # default_email="qazisaim121@gmail.com"
+    
     if request.method == 'POST':
-        address = default_email
+        address = request.POST.get('address')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
 
@@ -67,4 +68,4 @@ def contact(request):
         else:
             context['result'] = 'All fields are required'
     
-    return render(request, "new_contact.html", context)
+    return render(request, "contact.html", context)
