@@ -30,12 +30,10 @@
                                                                  alt=""></div> -->
                 <div class="col-xs-12 col-md-6">
                     <div class="about-text">
-                        <h3>The company</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
-                            diam.
-                            Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare
-                            diam    
-                            commodo nibh.</p>
+                        <h3>The company Overview</h3>
+                        <p>Founded in 1978 by Shamsuddin Umar Gouri, our company brings over 46 years of experience in the interior design industry. Under the current leadership of Salman Shamsuddin Umar Gouri, we continue to deliver timeless and innovative design solutions, blending tradition with modern elegance to create spaces that truly reflect our clients' unique tastes and needs.
+
+                        </p>
                         <h3>How We Work</h3>
                         <p>Our process begins with understanding your vision and transforming it into a thoughtful design. With expert craftsmanship and attention to detail, we bring your dream space to life..</p>
                     </div>
@@ -92,5 +90,58 @@
         </div>
     </div>
     -->
-    
+    <div id="contact">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Contact Us</h2>
+                <hr>
+                <p>Transform your space with our expert home design solutions – Contact us today!</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Contact Info</h3>
+                <div class="contact-item"><span>Address</span>
+                    <p>BMC plot jaihind budhha
+                         vikas chs jagruti Nagar 
+                         opp bldg no.95neharu nagar
+                          kurla (e) Mumbai 400024</p>
+                </div>
+                <div class="contact-item"><span>Email</span>
+                    <p>info@company.com</p>
+                </div>
+                <div class="contact-item"><span>Phone</span>
+                    <p> +91 88280 60744</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3>Leave us a message</h3>
+                <!-- name="sentMessage"  -->
+                <form  method="post" action="{% url 'service:contact' %}"  id="contactForm" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="address" type="email" id="address" class="form-control" placeholder="Email ID"
+                                       required="required">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" class="form-control" placeholder="subject"
+                                       required="required">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                    <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div id="success"></div>
+                    <input type="submit" class="btn btn-custom btn-lg">
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

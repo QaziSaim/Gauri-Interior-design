@@ -11,11 +11,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about" class="page-scroll">About</a></li>
-                <li><a href="#services" class="page-scroll">Services</a></li>
+                <li><a href="{% url 'index' %}" class="page-scroll">Home</a></li>
+                <li><a href="{% url 'service:about_home' %}" class="page-scroll">About</a></li>
+                <li><a href="{% url 'service:service_home' %}" class="page-scroll">Services</a></li>
                 <li><a href="{% url 'project:all_projects' %}" class="page-scroll">Projects</a></li>
-                <!-- <li><a href="#team" class="page-scroll">Team</a></li> -->
                 <li><a href="{% url 'service:contact' %}" class="page-scroll">Contact</a></li>
+                <!-- <li><a href="#team" class="page-scroll">Team</a></li> -->
             </ul>
         </div>
         <!-- /.navbar-collapse -->

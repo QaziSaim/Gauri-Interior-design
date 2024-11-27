@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="services">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1 section-title text-center">
+            <h2>Our Services</h2>
+            <hr>
+            <p>Offering personalized home design solutions to create spaces that inspire and delight.</p>
+        </div>
+        <div class="row">
+            {% for service in services %}
+                <div class="col-xs-12 col-sm-4 service"><img src="{{ service.image.url }}"
+                                                             class="img-responsive"
+                                                             alt="Project Title">
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                {% if service.url %}
+                    <a href="{{ service.url }}">Check website</a>
+                {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

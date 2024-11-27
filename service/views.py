@@ -69,3 +69,8 @@ def contact(request):
             context['result'] = 'All fields are required'
     
     return render(request, "contact.html", context)
+
+def service_home(request):
+    return render(request,'service.html')
+def about_home(request):
+    return render(request,'about.html')
