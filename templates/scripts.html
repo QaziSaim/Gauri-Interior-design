@@ -8,3 +8,13 @@
 <script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <!-- <script type="text/javascript" src="{% static 'style.css' %}"></script> -->
+<script>
+    // Open dropdown on hover
+    $(document).ready(function () {
+        $('.nav-item.dropdown').hover(function () {
+            $(this).find('.dropdown-menu').stop(true, true).slideDown(200);
+        }, function () {
+            $(this).find('.dropdown-menu').stop(true, true).slideUp(200);
+        });
+    });
+</script>
